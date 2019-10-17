@@ -1,0 +1,11 @@
+    version: '3.3'
+    services:
+      jenkins-slave:
+        image: jenkins/jnlp-slave
+        environment:
+          - JENKINS_URL=http://10.0.75.2:8080
+          - JENKINS_SECRET=2f31990ff59bcef57ba7fd1a7030a02e0adeb42be8a800439451c68c20899a91
+          - JENKINS_AGENT_NAME=Slave_1
+          - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+        volumes:
+          - /var/jenkins_home/workspace/android_jnlp:/home/jenkins/
