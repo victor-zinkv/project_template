@@ -9,3 +9,4 @@
           - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
         volumes:
           - /var/jenkins_home/workspace/android_jnlp:/home/jenkins/
+        restart: unless-stopped
