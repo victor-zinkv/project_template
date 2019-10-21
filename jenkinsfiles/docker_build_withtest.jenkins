@@ -1,0 +1,39 @@
+#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent { 
+        label 'docker-jnlp-agent'
+        }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("test") {
+            steps {
+               echo " ============== start test files =================="
+               dir ('docker/toolbox') {
+                	result='grep "Hello" Index.html | wc -l'
+                  echo $result
+                  if ["$result"="1"]
+                  then 
+                      echo "test passed"
+                  else    
+                      echo "test failed"
+                      exit 1
+                 fi
+                }            
+            }
+        }
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('docker/toolbox') {
+                	sh 'docker build . '
+                }
+            }
+        }
+    }
+}
