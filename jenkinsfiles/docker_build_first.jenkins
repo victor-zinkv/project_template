@@ -14,6 +14,13 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
+                println "uname -a".execute().text
+                sh "uname -a"
+                echo "NODE_NAME:"
+                echo env.NODE_NAME
+                echo "whoami:"
+                sh 'whoami'
+                println pwd()
                 dir ('docker/toolbox') {
                 	sh 'docker build . '
                 }
