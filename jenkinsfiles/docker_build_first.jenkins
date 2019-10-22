@@ -15,12 +15,14 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 println "uname -a".execute().text
+                println pwd()
                 sh "uname -a"
                 echo "NODE_NAME:"
                 echo env.NODE_NAME
                 echo "whoami:"
                 sh 'whoami'
-                println pwd()
+                echo "pwd:"
+                sh "pwd"
                 dir ('docker/toolbox') {
                 	sh 'docker build . '
                 }
