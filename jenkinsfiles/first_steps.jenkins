@@ -18,6 +18,7 @@ pipeline {
         }
         stage("Second step") {
             steps {
+                echo env.NODE_NAME
                 sh 'pwd'
                 sh 'whoami'
             }
