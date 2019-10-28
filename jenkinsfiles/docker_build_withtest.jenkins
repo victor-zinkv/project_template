@@ -17,13 +17,12 @@ pipeline {
                dir ('docker/toolbox') {
                 	result='grep "Hello" Index.html | wc -l'
                   echo $result
-                  if ("$result"=="1")
-                  then 
-                      echo "test passed"
-                  else    
+                   if ("$result"=="1") { 
+                       echo "test passed"}
+                   else  {  
                       echo "test failed"
-                      exit 1
-                 fi
+                       exit 1
+                   }
                 }            
             }
         }
