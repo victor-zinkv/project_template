@@ -2,7 +2,7 @@
 // Run docker build
 properties([disableConcurrentBuilds()])
 
-// pipeline {
+pipeline {
     agent { 
         label 'docker-jnlp-agent'
         }
@@ -35,4 +35,4 @@ properties([disableConcurrentBuilds()])
             }
         }
     }
-//}
+}
