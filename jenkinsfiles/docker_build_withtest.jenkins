@@ -16,7 +16,7 @@ pipeline {
                echo " ============== start test files =================="
                dir ('docker/toolbox') {
                  result=sh(script: 'grep "Hello" Index.html | wc -l', returnStdout: true).trim()
-                 echo $result
+                 echo result
                    if ( result=="1") { 
                        echo "test passed"}
                    else  {  
