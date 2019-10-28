@@ -2,7 +2,7 @@
 // Run docker build
 properties([disableConcurrentBuilds()])
 
-pipeline {
+// pipeline {
     agent { 
         label 'docker-jnlp-agent'
         }
@@ -18,13 +18,13 @@ pipeline {
                result=sh(script: 'grep "Hello" Index.html | wc -l', returnStdout: true).trim()
                echo result
                if ( result=="1") { 
-                  echo "test passed"}
-                  else  {  
-                  echo "test failed"
-                  sh "exit 1"
-                  }
+                   echo "test passed"}
+                   else  {  
+                   echo "test failed"
+                   sh "exit 1"
+                   }
                }            
-           }
+            }
         }
         stage("create docker image") {
             steps {
@@ -35,4 +35,4 @@ pipeline {
             }
         }
     }
-}
+//}
